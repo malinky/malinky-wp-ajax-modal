@@ -1,0 +1,17 @@
+.malinky-ajax-modal-loading {
+    display: none;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%); /* Android <= 4.4.4, Chrome < 36, iOS, Opera < 23, Safari */
+    -ms-transform: translate(-50%, -50%); /* IE 9 */
+    transform: translate(-50%, -50%); /* Android >= 37, Chrome > 35, Firefox > 15, IE > 9 Opera > 22, Opera Mobile > 10 */
+    width: 100px;
+    height: 100px;
+    background: #fff url(../img/loader.gif) 50% no-repeat;
+    background-size: 50px;
+    border: 5px solid #ececec;
+    z-index: 10001;
+    -webkit-animation: malinky-fade-in 0.15s linear; /* Android, Chrome, iOS, Opera > 12, Opera Mobile >= 24, Safari */
+      animation: malinky-fade-in 0.15s linear; /* Firefox > 15, IE > 9 */
+}
