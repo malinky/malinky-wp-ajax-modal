@@ -1,3 +1,32 @@
+/* Chrome, Opera > 12.1, Opera Mobile >= 24, Safari  */
+@-webkit-keyframes malinky-modal-fade-in {
+    from {
+        opacity: 0; 
+    }
+    to   {
+        opacity: 1;
+    }
+}
+
+/* Firefox > 15 */
+@-moz-keyframes malinky-modal-fade-in {
+    from {
+        opacity: 0; 
+    }
+    to   {
+        opacity: 1;
+    }
+}
+
+@keyframes malinky-modal-fade-in {
+    from {
+        opacity: 0; 
+    }
+    to   {
+        opacity: 1;
+    }
+}
+
 .malinky-ajax-modal-loading {
     display: none;
     position: fixed;
@@ -12,6 +41,63 @@
     background-size: 50px;
     border: 5px solid #ececec;
     z-index: 10001;
-    -webkit-animation: malinky-fade-in 0.15s linear; /* Android, Chrome, iOS, Opera > 12, Opera Mobile >= 24, Safari */
-      animation: malinky-fade-in 0.15s linear; /* Firefox > 15, IE > 9 */
+    -webkit-animation:  malinky-modal-fade-in 0.15s linear; /* Android, Chrome, iOS, Opera > 12, Opera Mobile >= 24, Safari */
+     animation:         malinky-modal-fade-in 0.15s linear; /* Firefox > 15, IE > 9 */
+}
+
+/*
+ * Width and height are added by main.js.
+ */
+.malinky-ajax-modal-overlay {
+    position: absolute;
+    background: #000;
+    top: 0;
+    left: 0;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)"; /* IE 8 */   
+    opacity: 0.8;
+    z-index: 10000;
+    -webkit-animation:  malinky-modal-fade-in 0.075s linear 0.075s backwards; /* Android, Chrome, iOS, Opera > 12, Opera Mobile >= 24, Safari */
+     animation:         malinky-modal-fade-in 0.075s linear 0.075s backwards; /* Firefox > 15, IE > 9 */  
+}
+
+/*
+ * .malinky-ajax-modal used for modal links.
+ */
+.malinky-ajax-modal {
+    position: fixed;
+    width: 90%;
+    max-width: 400px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10002;
+    border: 5px solid #ececec;
+    -webkit-animation:  malinky-modal-fade-in 0.15s linear 0.15s backwards; /* Android, Chrome, iOS, Opera > 12, Opera Mobile >= 24, Safari */
+     animation:         malinky-modal-fade-in 0.15s linear 0.15s backwards; /* Firefox > 15, IE > 9 */     
+}
+
+.malinky-ajax-modal__text { 
+    padding: 15px 10px;
+    background: #fff;
+}
+
+.malinky-ajax-modal__image {
+
+}
+
+.malinky-ajax-modal__text__heading {
+    margin-bottom: 10px;
+}
+
+.malinky-ajax-modal__close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #20944d;
+    width: 44px;
+    height: 44px;
+    line-height: 44px;
+    margin: 0;
+    font-size: 1.5em;
+    padding: 0;
 }
