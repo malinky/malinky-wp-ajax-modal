@@ -78,7 +78,7 @@ class Malinky_Ajax_Modal
 		/**
 		 * Set up variables to localize in main.js.
 		 */
-		$malinky_ajax_modal['ajaxurl'] 			= admin_url( 'admin-ajax.php' );
+		$malinky_ajax_modal['ajaxurl'] = admin_url( 'admin-ajax.php' );
 
 		wp_localize_script( 'malinky-ajax-modal-main-js', 'malinky_ajax_modal', $malinky_ajax_modal );
 		wp_enqueue_script( 'malinky-ajax-modal-main-js' );
@@ -98,14 +98,14 @@ class Malinky_Ajax_Modal
 		 * echo json_encode( $malinky_ajax_modal_post );
 		 * exit;
 		 */
-
+		
 		ob_start(); ?>
 
 			<div class="malinky-ajax-modal">
-				<img src="<?php echo get_stylesheet_directory_uri(); ?>/img/blog_test.jpg" alt="" class="malinky-ajax-modal__image" />
+				<img src="<?php echo esc_url( get_field( 'post_hero_shot', $malinky_ajax_modal_post->ID )['sizes']['malinky_thumbnail'] ); ?>" alt="" class="malinky-ajax-modal__image" />
 				<div class="malinky-ajax-modal__text">
 					<h5 class="malinky-ajax-modal__text__heading"><?php echo esc_html( $malinky_ajax_modal_post->post_title ); ?></h5>
-					<?php echo $malinky_ajax_modal_post->post_content; ?>
+					<p><?php echo $malinky_ajax_modal_post->post_content; ?></p>
 				</div>
 				<a class="malinky-ajax-modal__close button">X</a>
 			</div>
