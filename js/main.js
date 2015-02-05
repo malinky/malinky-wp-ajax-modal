@@ -37,8 +37,9 @@ jQuery(document).ready(function($){
 
                                 $('body').append(result.malinky_ajax_modal_post);
 
+        
                                 /**
-                                 * Remove loading div and clear timer.s
+                                 * Remove loading div and clear timers.
                                  */
                                 mamLoaded();
                                 clearTimeout(mamLoadingTimer);
@@ -67,6 +68,21 @@ jQuery(document).ready(function($){
     {
 
         $('.malinky-ajax-modal-loading').remove();
+
+        /*
+         * Use a timer when settings these to ensure append is finished in the ajax success.
+         * Reason is although success would normally be synchronus the ajax success method isn't.
+         * This results in the element height being calculated incorrectly without the timer.
+         */
+        setTimeout(function() {
+            $('.malinky-ajax-modal').css({
+                'display': 'block',
+                'left': '50%',
+                'top': '50%',
+                'margin-top': - $('.malinky-ajax-modal').outerHeight() / 2,
+                'margin-left': - $('.malinky-ajax-modal').outerWidth() / 2
+            });
+        }, 150);  
 
     }   
 
@@ -99,7 +115,7 @@ jQuery(document).ready(function($){
 
         if (!document.querySelector('.malinky-ajax-modal-loading')) {
             $('body').append('<div class="malinky-ajax-modal-loading"></div>');
-        }                               
+        }
 
         /**
          * Delay loading text and div.

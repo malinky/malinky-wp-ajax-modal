@@ -62,19 +62,18 @@
 
 /*
  * .malinky-ajax-modal used for modal links.
+ * left, top and margins are set in main.js dynamically.
  */
 .malinky-ajax-modal {
+    display: none;
     position: fixed;
     width: 90%;
     max-width: 400px;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
     z-index: 10002;
     background: #fff;
     border: 5px solid #ececec;
-    -webkit-animation:  malinky-modal-fade-in 0.15s linear 0.15s backwards; /* Android, Chrome, iOS, Opera > 12, Opera Mobile >= 24, Safari */
-    animation:         malinky-modal-fade-in 0.15s linear 0.15s backwards; /* Firefox > 15, IE > 9 */     
+    -webkit-animation:  malinky-modal-fade-in 0.10s linear backwards; /* Android, Chrome, iOS, Opera > 12, Opera Mobile >= 24, Safari */
+     animation:         malinky-modal-fade-in 0.10s linear backwards; /* Firefox > 15, IE > 9 */     
 }
 
 .malinky-ajax-modal__text { 
