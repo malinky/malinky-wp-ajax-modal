@@ -34,15 +34,12 @@ jQuery(document).ready(function($){
                                  * Debug result, also set in malinky_ajax_modal_submit() and malinky_ajax_modal_wp_query().
                                  * console.log(result);
                                  */
-
-                                $('body').append(result.malinky_ajax_modal_post);
+                                
+                                mamOpen(result.malinky_ajax_modal_post);
+                                
 
         
-                                /**
-                                 * Remove loading div and clear timers.
-                                 */
-                                mamLoaded();
-                                clearTimeout(mamLoadingTimer);
+                                
 
                             }
         });
@@ -50,25 +47,23 @@ jQuery(document).ready(function($){
     }
 
 
-    /**
-     * Add loader.gif
-     */
-    function mamLoading()
-    {
-
-        $('.malinky-ajax-modal-loading').show();
-
+    function mamOpen(mamSettings) {
+        mapOverlay();
+        $('body').append(mamSettings);
+        /*
+         * Show first then center.
+         */
+        $('.malinky-ajax-modal').show();
+        mamCenter();
+        /**
+         * Remove loading div and clear timers.
+         */
+        mamLoaded();
+        clearTimeout(mamLoadingTimer);
     }
 
 
-    /**
-     * Remove loader.gif
-     */
-    function mamLoaded()
-    {
-
-        $('.malinky-ajax-modal-loading').remove();
-
+    function mamCenter() {
         /*
          * Use a timer when settings these to ensure append is finished in the ajax success.
          * Reason is although success would normally be synchronus the ajax success method isn't.
@@ -76,63 +71,71 @@ jQuery(document).ready(function($){
          */
         setTimeout(function() {
             $('.malinky-ajax-modal').css({
-                'display': 'block',
                 'left': '50%',
                 'top': '50%',
                 'margin-top': - $('.malinky-ajax-modal').outerHeight() / 2,
                 'margin-left': - $('.malinky-ajax-modal').outerWidth() / 2
             });
-        }, 150);  
+        }, 150);
+    }
 
+
+    function mapOverlay() {
+        $('body').append('<div class="malinky-ajax-modal-overlay"></div>');
+    }
+
+
+    function mamClose() {
+        $('.malinky-ajax-modal-overlay').remove();
+        $('.malinky-ajax-modal-loading').remove();
+        $('.malinky-ajax-modal').remove();
+        $(window).unbind('resize.mamModal');
+    }
+
+
+    /**
+     * Append and show loader.gif
+     */
+    function mamLoading() {
+        $('body').append('<div class="malinky-ajax-modal-loading"></div>');
+        $('.malinky-ajax-modal-loading').show();
+    }
+
+
+    /**
+     * Remove loader.gif
+     */
+    function mamLoaded() {
+        $('.malinky-ajax-modal-loading').remove();
     }   
 
 
     /**
      * Close and destroy modal.
-     * Attach the event to body as it's the nearest static parent on page load.
+     * Attach the event to body as it's the nearest static parent on page load. See delegated events
      */
     $('body').on( 'click', '.malinky-ajax-modal__close, .malinky-ajax-modal-overlay', function(event) {
-
-        $('.malinky-ajax-modal-overlay').remove();
-        $('.malinky-ajax-modal-loading').remove();
-        $('.malinky-ajax-modal').remove();
-
+        mamClose();
     });
 
 
     /**
-     * Use .on as the pagination is added after page load and we need to use delegated event.
+     * Attach click event to modal links.
      */
     $('.malinky-ajax-modal-link').click(function(event) {
-
         var mamUrl = $(this).attr('href');
-
-        if (!document.querySelector('.malinky-ajax-modal-overlay')) {
-            $('body').append('<div class="malinky-ajax-modal-overlay"></div>');
-            $('.malinky-ajax-modal-overlay').width($(document).width());
-            $('.malinky-ajax-modal-overlay').height($(document).height());
-        }   
-
-        if (!document.querySelector('.malinky-ajax-modal-loading')) {
-            $('body').append('<div class="malinky-ajax-modal-loading"></div>');
-        }
-
         /**
          * Delay loading text and div.
          */
         mamLoadingTimer = setTimeout(mamLoading, 750);
-
         /**
          * Debug timer. Remove mamPost call and use setTimeout instead.
          * setTimeout(function() {
          *   mamPost(mamUrl);
          * }, 3000);
          */                 
-
         mamPost(mamUrl);
-
         event.preventDefault();
-
     });  
 
 });

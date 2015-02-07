@@ -49,8 +49,10 @@
  * Width and height are added by main.js.
  */
 .malinky-ajax-modal-overlay {
-    position: absolute;
+    position: fixed;
     background: #000;
+    width: 100%;
+    height: 100%;
     top: 0;
     left: 0;
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)"; /* IE 8 */   
@@ -72,8 +74,8 @@
     z-index: 10002;
     background: #fff;
     border: 5px solid #ececec;
-    -webkit-animation:  malinky-modal-fade-in 0.10s linear backwards; /* Android, Chrome, iOS, Opera > 12, Opera Mobile >= 24, Safari */
-     animation:         malinky-modal-fade-in 0.10s linear backwards; /* Firefox > 15, IE > 9 */     
+    -webkit-animation:  malinky-modal-fade-in 0.15s linear backwards; /* Android, Chrome, iOS, Opera > 12, Opera Mobile >= 24, Safari */
+     animation:         malinky-modal-fade-in 0.15s linear backwards; /* Firefox > 15, IE > 9 */     
 }
 
 .malinky-ajax-modal__text { 
