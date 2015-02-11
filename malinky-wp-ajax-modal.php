@@ -101,11 +101,11 @@ class Malinky_Ajax_Modal
 		
 		ob_start(); ?>
 
-			<div class="malinky-ajax-modal">
-				<img src="<?php echo esc_url( get_field( 'post_hero_shot', $malinky_ajax_modal_post->ID )['sizes']['malinky_thumbnail'] ); ?>" alt="<?php echo esc_attr( $malinky_ajax_modal_post->post_title ); ?>" class="malinky-ajax-modal__image" />
+			<div class="malinky-ajax-modal" itemscope itemtype="http://schema.org/ItemPage">
+				<img src="<?php echo esc_url( get_field( 'post_hero_shot', $malinky_ajax_modal_post->ID )['sizes']['malinky_thumbnail'] ); ?>" alt="<?php echo esc_attr( $malinky_ajax_modal_post->post_title ); ?>" class="malinky-ajax-modal__image" itemprop="primaryImageOfPage" />
 				<div class="malinky-ajax-modal__text">
-					<h5 class="malinky-ajax-modal__text__heading"><?php echo esc_html( $malinky_ajax_modal_post->post_title ); ?></h5>
-					<p><?php echo $malinky_ajax_modal_post->post_content; ?></p>
+					<h5 class="malinky-ajax-modal__text__heading" itemprop="name"><?php echo esc_html( $malinky_ajax_modal_post->post_title ); ?></h5>
+					<p itemprop="mainContentOfPage"><?php echo $malinky_ajax_modal_post->post_content; ?></p>
 				</div>
 				<a class="malinky-ajax-modal__close button">X</a>
 			</div>
