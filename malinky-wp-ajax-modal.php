@@ -92,7 +92,8 @@ class Malinky_Ajax_Modal
 		$modal_url 	= isset( $_GET['mamUrl'] ) ? $_GET['mamUrl'] : false;
 
 		$malinky_ajax_modal_post = malinky_ajax_modal_post( $modal_url );
-		
+		$malinky_ajax_modal_post_hero_shot = get_field( 'post_hero_shot', $malinky_ajax_modal_post->ID );
+
 		/**
 		 * Debugging.
 		 * echo json_encode( $malinky_ajax_modal_post );
@@ -102,7 +103,7 @@ class Malinky_Ajax_Modal
 		ob_start(); ?>
 
 			<div class="malinky-ajax-modal" itemscope itemtype="http://schema.org/ItemPage">
-				<img src="<?php echo esc_url( get_field( 'post_hero_shot', $malinky_ajax_modal_post->ID )['sizes']['malinky_thumbnail'] ); ?>" alt="<?php echo esc_attr( $malinky_ajax_modal_post->post_title ); ?>" class="malinky-ajax-modal__image" itemprop="primaryImageOfPage" />
+				<img src="<?php echo esc_url( $malinky_ajax_modal_post_hero_shot['sizes']['malinky_thumbnail'] ); ?>" alt="<?php echo esc_attr( $malinky_ajax_modal_post->post_title ); ?>" class="malinky-ajax-modal__image" itemprop="primaryImageOfPage" />
 				<div class="malinky-ajax-modal__text">
 					<h3 class="malinky-ajax-modal__text__heading" itemprop="name"><?php echo esc_html( $malinky_ajax_modal_post->post_title ); ?></h3>
 					<p itemprop="mainContentOfPage"><?php echo $malinky_ajax_modal_post->post_content; ?></p>
