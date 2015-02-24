@@ -123,19 +123,23 @@ jQuery(document).ready(function($){
      * Attach click event to modal links.
      */
     $('.malinky-ajax-modal-link').click(function(event) {
-        var mamUrl = $(this).attr('href');
-        /**
-         * Delay loading text and div.
-         */
-        mamLoadingTimer = setTimeout(mamLoading, 750);
-        /**
-         * Debug timer. Remove mamPost call and use setTimeout instead.
-         * setTimeout(function() {
-         *   mamPost(mamUrl);
-         * }, 3000);
-         */                 
-        mamPost(mamUrl);
-        event.preventDefault();
+        if (window.matchMedia('(min-width: 768px)').matches) {
+            var mamUrl = $(this).attr('href');
+            /**
+             * Delay loading text and div.
+             */
+            mamLoadingTimer = setTimeout(mamLoading, 750);
+            /**
+             * Debug timer. Remove mamPost call and use setTimeout instead.
+             * setTimeout(function() {
+             *   mamPost(mamUrl);
+             * }, 3000);
+             */                 
+            mamPost(mamUrl);
+            event.preventDefault();
+        } else {
+            return;
+        }
     });  
 
 });
