@@ -47,17 +47,21 @@ class Malinky_Ajax_Modal
 	public function malinky_ajax_modal_styles()
 	{
 
-		/**
-		 * Ajax paging style.
-		 *
-		 * @link http://bxslider.com/
-		 */		
-		wp_register_style( 'malinky-ajax-modal', 
-							MALINKY_AJAX_MODAL_PLUGIN_URL . '/css/style.css', 
-							false, 
-							NULL
-		);
-		wp_enqueue_style( 'malinky-ajax-modal' );
+		//if ( WP_ENV != 'dev' && WP_ENV != 'prod' ) {
+
+			/**
+			 * Ajax paging style.
+			 *
+			 * @link http://bxslider.com/
+			 */		
+			wp_register_style( 'malinky-ajax-modal', 
+								MALINKY_AJAX_MODAL_PLUGIN_URL . '/css/style.css', 
+								false, 
+								NULL
+			);
+			wp_enqueue_style( 'malinky-ajax-modal' );
+
+		//}
 
 	}
 
