@@ -47,7 +47,7 @@ class Malinky_Ajax_Modal
 	public function malinky_ajax_modal_styles()
 	{
 
-		//if ( WP_ENV != 'dev' && WP_ENV != 'prod' ) {
+		if ( WP_ENV != 'dev' && WP_ENV != 'prod' ) {
 
 			/**
 			 * Ajax paging style.
@@ -61,7 +61,7 @@ class Malinky_Ajax_Modal
 			);
 			wp_enqueue_style( 'malinky-ajax-modal' );
 
-		//}
+		}
 
 	}
 
